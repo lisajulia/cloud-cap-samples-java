@@ -7,7 +7,7 @@ extend my.Orders with changelog.changeTracked;
 
 @path: 'admin'
 @odata.apply.transformations
-service AdminService @(requires: 'admin') {
+service AdminService {
   entity Books          as
     projection on my.Books
     excluding {
