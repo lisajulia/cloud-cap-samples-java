@@ -1,0 +1,19 @@
+{
+  "requires": {
+    "[hybrid]": {
+      "cds-feature-attachment-oss": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.eu20-001.hana.ondemand.com",
+          "org": "CAP_Munich_Dev_d061404-azure",
+          "space": "dev",
+          "instance": "cds-feature-attachment-oss",
+          "key": "cds-feature-attachment-oss-key"
+        },
+        "vcap": {
+          "name": "cds-feature-attachment-oss"
+        }
+      }
+    }
+  }
+}

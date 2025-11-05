@@ -60,8 +60,8 @@
 
 		<dependency>
 			<groupId>com.sap.cds</groupId>
-			<artifactId>cds-feature-attachments</artifactId>
-			<version>${cds-feature-attachments.version}</version>
+			<artifactId>cds-feature-attachments-oss</artifactId>
+			<version>${cds-feature-attachments-oss.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
