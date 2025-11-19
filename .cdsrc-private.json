@@ -1,17 +1,30 @@
 {
   "requires": {
     "[hybrid]": {
-      "cds-feature-attachment-oss": {
+      "custom-service:object-store-attachments": {
         "binding": {
           "type": "cf",
-          "apiEndpoint": "https://api.cf.eu20-001.hana.ondemand.com",
-          "org": "CAP_Munich_Dev_d061404-azure",
-          "space": "dev",
-          "instance": "cds-feature-attachment-oss",
-          "key": "cds-feature-attachment-oss-key"
+          "apiEndpoint": "https://api.cf.sap.hana.ondemand.com",
+          "org": "cdsnode",
+          "space": "cdsjava",
+          "instance": "object-store-attachments",
+          "key": "object-store-attachments-key"
         },
         "vcap": {
-          "name": "cds-feature-attachment-oss"
+          "name": "custom-service:object-store-attachments"
+        }
+      },
+      "custom-service:malware-scanner": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.sap.hana.ondemand.com",
+          "org": "cdsnode",
+          "space": "cdsjava",
+          "instance": "malware-scanner",
+          "key": "malware-scanner"
+        },
+        "vcap": {
+          "name": "custom-service:malware-scanner"
         }
       }
     }
