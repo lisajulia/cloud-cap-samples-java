@@ -1,0 +1,19 @@
+{
+  "requires": {
+    "[hybrid]": {
+      "sdm-standard": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.eu20-001.hana.ondemand.com",
+          "org": "CAP_Munich_Dev_d061404-azure",
+          "space": "dev",
+          "instance": "sdm-standard",
+          "key": "sdm-standard-key"
+        },
+        "vcap": {
+          "name": "sdm-standard"
+        }
+      }
+    }
+  }
+}
