@@ -64,6 +64,13 @@
       <scope>runtime</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.sap.cds</groupId>
+      <artifactId>cds-adapter-mcp</artifactId>
+      <version>${cds-adapter-mcp.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
     <!-- CLOUD SDK dependencies -->
     <dependency>
       <groupId>com.sap.cloud.sdk.cloudplatform</groupId>

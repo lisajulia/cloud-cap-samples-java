@@ -7,7 +7,7 @@ extend my.Orders with changelog.changeTracked;
 
 @path: 'admin'
 @odata.apply.transformations
-service AdminService @(requires: 'admin') {
+service AdminService {
   entity Books          as
     projection on my.Books
     excluding {
@@ -53,6 +53,7 @@ annotate AdminService.Books with @cds.search: {
 
 // Enable Fiori Draft for Orders
 annotate AdminService.Orders with @odata.draft.enabled;
+annotate AdminService.Books with @mcp;
 annotate AdminService.Books with @odata.draft.enabled;
 annotate AdminService.GenreHierarchy with @odata.draft.enabled;
 

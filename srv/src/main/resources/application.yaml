@@ -6,6 +6,12 @@ spring:
   jmx:
     enabled: true
 cds:
+  mcp:
+    endpoint:
+      enabled: true
+      path: "/mcp"  # Optional: defaults to /mcp
+    autoConfig:
+      enabled: true  # Optional: for auto-configuration features
   errors:
     prefer-service-exception: true
   odata-v4:
