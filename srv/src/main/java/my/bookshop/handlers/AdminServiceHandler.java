@@ -317,7 +317,7 @@ class AdminServiceHandler implements EventHandler {
                   book.setStock(Integer.valueOf(p[4]).intValue());
                   book.setPrice(BigDecimal.valueOf(Double.valueOf(p[5])));
                   book.setCurrencyCode(p[6]);
-                  book.setGenreId(String.valueOf(p[7]));
+                  book.setGenreId(10);
 
                   // separate transaction per line
                   context

@@ -7,7 +7,7 @@ extend my.Orders with changelog.changeTracked;
 
 @path: 'admin'
 @odata.apply.transformations
-service AdminService @(requires: 'admin') {
+service AdminService {
   entity Books          as
     projection on my.Books
     excluding {
@@ -89,3 +89,25 @@ annotate AdminService.OrderItems with @changelog: [
 extend my.Books with {
   covers : Composition of many Attachments;
 };
+
+type RecommendationItem_Integer {
+    RecommendedFieldValue       : Integer;
+    RecommendedFieldDescription : String;
+    RecommendedFieldScoreValue  : Decimal;
+    RecommendedFieldIsSuggestion: Boolean;
+  }
+
+  type RecommendationItem_UUID {
+    RecommendedFieldValue       : UUID;
+    RecommendedFieldDescription : String;
+    RecommendedFieldScoreValue  : Decimal;
+    RecommendedFieldIsSuggestion: Boolean;
+  }
+  extend my.Books with {
+  SAP_Recommendations : Composition of one {
+    genre_ID  : many RecommendationItem_Integer;
+    author_ID : many RecommendationItem_UUID;
+  }
+};
+
+annotate AdminService.Books with @(UI.Recommendations: SAP_Recommendations);

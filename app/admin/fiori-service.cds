@@ -44,8 +44,10 @@ annotate AdminService.Books with @(UI : {
         }
     ],
     FieldGroup #General : {Data : [
-        {Value : genre_ID},
-        {Value : descr},
+        {Value: title},
+        {Value: author_ID},
+        {Value: genre_ID},
+        {Value: descr}
     ]},
     FieldGroup #Details : {Data : [
         {Value : stock},
@@ -69,49 +71,55 @@ annotate AdminService.Books with @(UI : {
 //	Value Help for Tree Table
 //
 annotate AdminService.Books with {
-    genre @(Common: {
-        Label    : '{i18n>Genre}',
-        ValueList: {
-            CollectionPath              : 'GenreHierarchy',
-            Parameters                  : [
-            {
-                $Type            : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty: 'name',
-            },
-            {
-                $Type            : 'Common.ValueListParameterInOut',
-                LocalDataProperty: genre_ID,
-                ValueListProperty: 'ID',
-            }
-            ],
-            PresentationVariantQualifier: 'VH',
-        }
-    });
+  genre   @title: '{i18n>Genre}'        @Common              : {
+    Text           : genre.name,
+    TextArrangement: #TextOnly
+  };
 }
+//annotate AdminService.Books with {
+//    genre @(Common: {
+//        Label    : '{i18n>Genre}',
+//        ValueList: {
+//            CollectionPath              : 'GenreHierarchy',
+//            Parameters                  : [
+//            {
+//                $Type            : 'Common.ValueListParameterDisplayOnly',
+//                ValueListProperty: 'name',
+//            },
+//            {
+//                $Type            : 'Common.ValueListParameterInOut',
+//                LocalDataProperty: genre_ID,
+//                ValueListProperty: 'ID',
+//            }
+//            ],
+//            PresentationVariantQualifier: 'VH',
+//        }
+//    });
+//}
 
 // Hide ID because of the ValueHelp
-annotate AdminService.GenreHierarchy with {
-  ID @UI.Hidden;
-};
-
-annotate AdminService.GenreHierarchy with @Hierarchy.RecursiveHierarchyActions #GenreHierarchy: {
-  $Type                  : 'Hierarchy.RecursiveHierarchyActionsType',
-  // any name can be the action name with namespace/no bound action name
-  ChangeNextSiblingAction: 'AdminService.moveSibling',
-};
-
-annotate AdminService.GenreHierarchy with @UI: {
-    PresentationVariant #VH: {
-        $Type                      : 'UI.PresentationVariantType',
-        Visualizations             : ['@UI.LineItem'],
-        RecursiveHierarchyQualifier: 'GenreHierarchy'
-    },
-    LineItem               : [{
-        $Type: 'UI.DataField',
-        Value: name,
-        Label : '{i18n>Genre}'
-    }],
-};
+//annotate AdminService.GenreHierarchy with {
+//  ID @UI.Hidden;
+//};
+//
+//annotate AdminService.GenreHierarchy with @Hierarchy.RecursiveHierarchyActions #GenreHierarchy: {
+//  $Type                  : 'Hierarchy.RecursiveHierarchyActionsType',
+//  // any name can be the action name with namespace/no bound action name
+//  ChangeNextSiblingAction: 'AdminService.moveSibling',
+//};
+//
+//annotate AdminService.GenreHierarchy with @UI: {
+//    PresentationVariant #VH: {
+//        $Type                      : 'UI.PresentationVariantType',
+//        Visualizations             : ['@UI.LineItem'],
+//        RecursiveHierarchyQualifier: 'GenreHierarchy'
+//    },
+//    LineItem               : [{
+//        $Type: 'UI.DataField',
+//        Value: name,
+//        Label : '{i18n>Genre}'
+//    }],
+//};
 
 annotate AdminService.ContentsHierarchy with @UI: {
     PresentationVariant  : {
@@ -250,3 +258,9 @@ annotate AdminService.Books actions {
 
 // Hides technical field up__ID in View Setitings dialog for Books.covers
 annotate AdminService.Books.covers:up_ with @UI.Hidden;
+
+// Show Genre as drop down, not a dialog
+annotate AdminService.Books with {
+  genre @Common.ValueListWithFixedValues;
+  author @Common.ValueListWithFixedValues;
+}
