@@ -1,0 +1,28 @@
+{
+  "name": "java-bookshop-a2a",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "dependencies": {
+    "@cap-js/a2a": "/Users/d061404/git_repos/node/cap-a2a",
+    "@cap-js/sqlite": "*",
+    "@sap/xssec": "^4",
+    "@sap/xsenv": "^5"
+  },
+  "cds": {
+    "requires": {
+      "a2a": { "llm": "anthropic--claude-4.5-sonnet"},
+      "db": {
+        "kind": "sqlite",
+        "impl": "@cap-js/sqlite",
+        "credentials": { "database": "../../srv/db.sqlite" }
+      },
+      "auth": { "kind": "mocked" }
+    },
+    "server": {
+      "impl": "./server.js",
+      "port": 4007
+    }
+  }
+}

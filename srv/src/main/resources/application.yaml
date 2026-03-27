@@ -133,8 +133,13 @@ cds:
 ---
 spring:
   config.activate.on-profile: default
-  sql.init.platform: h2
-  sql.init.schema-locations: classpath:schema-h2.sql,classpath:indices-h2.sql
+  datasource:
+    url: jdbc:sqlite:db.sqlite
+    driver-class-name: org.sqlite.JDBC
+  sql.init:
+    platform: sqlite
+    schema-locations: classpath:schema-sqlite.sql
+    mode: always
 cds:
   data-source:
     auto-config.enabled: false
