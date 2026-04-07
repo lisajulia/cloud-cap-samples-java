@@ -8,7 +8,11 @@ using {my.common.Hierarchy as Hierarchy} from './hierarchy';
 @fiori.draft.enabled
 entity Books : cuid, managed {
     title        : localized String(111);
-    descr        : localized String(1111);
+    @ai.embedding
+    descr        : String(1111);
+    @cds.api.ignore
+    descr_embedding   : Vector = (VECTOR_EMBEDDING(descr, 'DOCUMENT', 'SAP_GXY.20250407')) stored;
+    //descr_embedding   : String(1111); // todo: for testing only, remove later
     author       : Association to Authors;
     genre        : Association to Genres;
     stock        : Integer;
